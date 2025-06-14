@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Route Planner</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="sidebar">
+            <h1>Smart Route Planner</h1>
+            <div class="input-section">
+                <div class="location-input-wrapper">
+                    <label for="startLocation">Start Location:</label>
+                    <input type="text" id="startLocation" placeholder="Enter start location">
+                    <div id="startSuggestions" class="suggestions"></div>
+                </div>
+                <div class="location-input-wrapper">
+                    <label for="endLocation">Destination:</label>
+                    <input type="text" id="endLocation" placeholder="Enter destination">
+                    <div id="endSuggestions" class="suggestions"></div>
+                </div>
+                <div class="vehicle-select">
+                    <label for="vehicleType">Vehicle Type:</label>
+                    <select id="vehicleType">
+                        <option value="car">Car (Petrol)</option>
+                        <option value="car-diesel">Car (Diesel)</option>
+                        <option value="car-hybrid">Car (Hybrid)</option>
+                        <option value="car-electric">Car (Electric)</option>
+                        <option value="suv">SUV</option>
+                        <option value="truck">Truck</option>
+                        <option value="motorcycle">Motorcycle</option>
+                    </select>
+                </div>
+                <button onclick="calculateRoute()" class="calculate-btn">Calculate Routes</button>
+            </div>
+            <div class="info-section">
+                <h3>Primary Route</h3>
+                <div class="info-item">
+                    <span class="info-label">Distance:</span>
+                    <span id="distance">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Duration:</span>
+                    <span id="duration">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Fuel/Energy:</span>
+                    <span id="fuel">-</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">Weather:</span>
+                    <span id="weather">-</span>
+                </div>
+            </div>
+            <div class="alternate-routes-section">
+                <h3>Alternate Routes</h3>
+                <div id="alternateRoutes"></div>
+            </div>
+            <div class="efficiency-section">
+                <h3>Fuel Efficiency Comparison</h3>
+                <div class="efficiency-table" id="efficiencyComparison">
+                    <div class="efficiency-header">
+                        <span>Vehicle Type</span>
+                        <span>Cost per km</span>
+                        <span>Total Cost</span>
+                    </div>
+                    <div id="efficiencyData"></div>
+                </div>
+            </div>
+            <div class="loading-indicator" id="loadingIndicator" style="display: none;">
+                <div class="spinner"></div>
+                <span>Calculating routes...</span>
+            </div>
+            <div class="error-message" id="errorMessage" style="display: none;"></div>
+        </div>
+        <div id="map"></div>
+    </div>
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
